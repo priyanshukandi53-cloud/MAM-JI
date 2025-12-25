@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tulsi Puja</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  background:linear-gradient(160deg,#0f2027,#203a43,#2c5364);
+  font-family:'Segoe UI',sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+.screen{
+  display:none;
+  text-align:center;
+  max-width:750px;
+  padding:30px;
+  animation:fadeUp 1.4s ease;
+}
+
+.active{display:block;}
+
+p{
+  font-size:23px;
+  line-height:1.8;
+  color:#fff;
+  text-shadow:0 3px 10px rgba(0,0,0,0.5);
+}
+
+button{
+  margin-top:35px;
+  padding:14px 45px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  background:#fff;
+  color:#2c5364;
+  cursor:pointer;
+  box-shadow:0 8px 25px rgba(0,0,0,0.3);
+}
+
+img{
+  max-width:240px;
+  border-radius:25px;
+  margin:18px;
+  box-shadow:0 0 30px rgba(255,255,255,0.7);
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(50px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* FLOWERS + HEARTS */
+.float{
+  position:absolute;
+  font-size:22px;
+  animation:fall 9s linear infinite;
+  opacity:0.9;
+}
+
+@keyframes fall{
+  from{transform:translateY(-10vh);}
+  to{transform:translateY(110vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="screen active">
+  <p>🌿 Tulsi Puja Special 🌿</p>
+  <button onclick="next()">Start</button>
+</div>
+
+<div class="screen">
+  <p>Aaj Tulsi Puja hai…<br>
+  ek pavitra din, ek shuddh ehsaas 🙏</p>
+  <button onclick="next()">Next</button>
+</div>
+
+<div class="screen">
+  <p>Tum mere liye sirf ek insaan nahi,<br>
+  tum ek Devi Maa jaisi ho 🌺</p>
+  <button onclick="next()">Next</button>
+</div>
+
+<div class="screen">
+  <p>Tumhari presence meri zindagi mein<br>
+  Tulsi Maa ki tarah pavitrata laati hai 🌿</p>
+  <button onclick="next()">Next</button>
+</div>
+
+<div class="screen">
+  <img src="pic1.jpg">
+  <img src="pic2.jpg">
+  <p>In tasveeron mein sirf chehra nahi,<br>
+  mujhe ek shanti dikhai deti hai ✨</p>
+  <button onclick="next()">Next</button>
+</div>
+
+<div class="screen">
+  <p>Tumhari muskaan<br>
+  mere mann ko shant kar deti hai 🙏</p>
+  <button onclick="next()">Next</button>
+</div>
+
+<div class="screen">
+  <img src="pic3.jpg">
+  <img src="pic4.jpg">
+  <p>Tumhari simplicity hi<br>
+  tumhe sabse alag banati hai 🌸</p>
+  <button onclick="next()">Next</button>
+</div>
+
+<div class="screen">
+  <p>Main har din bhagwan se bas ek hi dua maangta hoon…<br>
+  tum hamesha khush raho 💫</p>
+  <button onclick="next()">Next</button>
+</div>
+
+<div class="screen">
+  <p>Aaj Tulsi Puja ke is pavitra din par<br>
+  meri taraf se tumhe dher saari shubhkamnayein 🌿</p>
+  <button onclick="next()">Next</button>
+</div>
+
+<div class="screen">
+  <p>
+    🌺 Tulsi Puja ki hardik shubhkamnayein 🌺<br><br>
+    Devi Maa jaise pavitra dil ke liye<br>
+    ye chhota sa pranaam 🙏
+  </p>
+</div>
+
+<script>
+let i=0;
+const screens=document.querySelectorAll(".screen");
+
+function next(){
+  screens[i].classList.remove("active");
+  i++;
+  if(i<screens.length){
+    screens[i].classList.add("active");
+    floatItems();
+  }
+}
+
+function floatItems(){
+  const icons=["🌸","❤️","🌿"];
+  for(let j=0;j<10;j++){
+    let f=document.createElement("div");
+    f.className="float";
+    f.innerText=icons[Math.floor(Math.random()*icons.length)];
+    f.style.left=Math.random()*100+"vw";
+    f.style.animationDuration=(6+Math.random()*5)+"s";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),10000);
+  }
+}
+
+const q=new URLSearchParams(window.location.search);
+if(q.get("key")!=="pratyasha"){
+  document.body.innerHTML="<h1 style='color:white'>🔒 Private</h1>";
+}
+</script>
+
+</body>
+</html>
